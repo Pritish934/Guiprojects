@@ -3,8 +3,10 @@ import tkinter as tk
 from tkinter import *
 from tkinter.ttk import Combobox
 
+# List of all currency
 currency_list = ['INR','USD','AED','BHD','BRL','CAD','CNY','EUR','HKD','IDR','BGN','ILS','GBP','DKK','JPY','HUF','RON','MYR','SEK','SGD','CHF','KRW','TRY','HRK','NZD','THB','NOK','RUB','MXN','CZK','PLN','PHP','ZAR']
 
+# Function for create the widget
 def CreateWidgets():
     inputAMT_Label = Label(root,text="AMOUNT : ",bg="peachpuff4")
     inputAMT_Label.grid(row=1,column=0,padx=5,pady=5)
@@ -25,7 +27,7 @@ def CreateWidgets():
     convertButton = Button(root,text="CONVERT",width=15, command=Convert)
     convertButton.grid(row=4,column=0, columnspan=3,pady=5,padx=5)
 
-    extraLabel = Label(root,text="EXCHAGE RATE : ", bg="peachpuff4")
+    extraLabel = Label(root,text="EXCHANGE RATE : ", bg="peachpuff4")
     extraLabel.grid(row=5,column=0,padx=5,pady=5,columnspan=2)
     root.exrate = Label(root,width=14,font=('',20),bg='snow3',justify="center")
     root.exrate.grid(row=5,column=2,padx=5,pady=5)
@@ -35,6 +37,7 @@ def CreateWidgets():
     root.outputAMT = Label(root, width=14, font=('',20), bg="snow3",justify="center")
     root.outputAMT.grid(row=6,column=2, padx=5,columnspan=2)
 
+# Convert function
 def Convert():
     inputAmt = float(getAMT.get())
     from_Currency = root.fromList.get()
@@ -52,13 +55,16 @@ def Convert():
     calculateAmt = round(inputAmt * exchangeRate, 2)
     root.outputAMT.config(text=str(calculateAmt))
 
+# Root object
 root = tk.Tk()
 
+# Design of the gui
 root.geometry("350x250")
 root.resizable(False,False)
 root.title("Currency Converter")
 root.config(bg="peachpuff4")
 
+# Variables
 getAMT = StringVar()
 fromCurrency = StringVar()
 toCurrency = StringVar()
